@@ -1,3 +1,6 @@
+//----------------------------------------------------------------
+//-- node.js
+//----------------------------------------------------------------
 
 // express
 const express = require('express');
@@ -5,6 +8,11 @@ const app = express();
 // sqlite3
 const sqlite3 = require('sqlite3');
 const dbPath = "app/db/database.sqlite3"
+// static
+const path = require('path');
+const nodemon = require('nodemon');
+console.log("__dirname: " + __dirname);
+app.use(express.static(path.join(__dirname, 'public')))
 
 //----------------------------------------------------------------
 // Get all users
