@@ -8,7 +8,6 @@ const usersModule = (() => {
       // fetchは、GETメソッドを実行する。awaitで待つ
       const res = await fetch(BASE_URL);
       const users = await res.json();
-      console.log("users.length: " + users.length);
       for (let i=0; i< users.length; i++) {
         const user = users[i];
         const body = `<tr>
