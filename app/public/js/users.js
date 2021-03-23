@@ -5,6 +5,38 @@ const usersModule = (() => {
   const headers = new Headers()
   headers.set("Content-Type","application/json")
 
+  // error
+  const handleError = async (res) => {
+    // 結果をJSONで受け取りメッセージを表示
+    const resJSON = await res.json()
+    switch (res.status) {
+      case 200:
+        alert(res.status + ": " +resJSON.message)
+        // 一覧ページへ遷移する
+        window.location.href = "/"
+        break;
+      case 201:
+        alert(res.status + ": " +resJSON.message)
+        window.location.href = "/"
+        break;
+      case 400:
+        //  クエリパラメータ間違い　例）ユーザ名が指定されていない。
+        alert("400: " +resJSON.error)
+        break;
+      case 404:
+        //  クエリパラメータ間違い　例）ユーザがない。
+        alert("404: " + resJSON.error)
+        break;
+      case 500:
+        //  サーバの内部エラー　例）try catch error
+        alert("500: " + resJSON.error)
+        break;
+      default:
+        alert(res.status + ": 何らかのエラーが発生しました。")
+        break;
+    }
+  }
+
   return {
     // ユーザ一覧の表示
     fetchAllUsers: async () => {
@@ -48,12 +80,8 @@ const usersModule = (() => {
         body: JSON.stringify(body)
       })
 
-      // 結果をJSONで受け取りメッセージを表示
-      const resJSON = await res.json()
-      alert(resJSON.message)
-      
-      // 一覧ページへ遷移する
-      window.location.href = "/"
+      return handleError(res)
+
     },
     // ユーザ情報表示
     setExistingValue: async (uid) => {
@@ -85,12 +113,7 @@ const usersModule = (() => {
         body: JSON.stringify(body)
       })
 
-      // 結果をJSONで受け取りメッセージを表示
-      const resJSON = await res.json()
-      alert(resJSON.message)
-      
-      // 一覧ページへ遷移する
-      window.location.href = "/"
+      return handleError(res)
     },
     // ユーザ削除
     deleteUser: async(uid) => {
@@ -104,12 +127,7 @@ const usersModule = (() => {
           headers: headers
         })
 
-        // 結果をJSONで受け取りメッセージを表示
-        const resJSON = await res.json()
-        alert(resJSON.message)
-        
-        // 一覧ページへ遷移する
-        window.location.href = "/"
+        return handleError(res)
 
       }
 
