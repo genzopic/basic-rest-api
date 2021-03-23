@@ -100,7 +100,7 @@ const usersModule = (() => {
       } else {
         // WebAPIを実行してユーザを追加する（PUT /api/v1/users/:uid）
         const res = await fetch(BASE_URL + "/" + uid, {
-          method: "PUT",
+          method: "DELETE",
           headers: headers
         })
 
