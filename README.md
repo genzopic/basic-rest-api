@@ -22,3 +22,4 @@ npm run connect
 |[ ]|DELETE|/api/v1/users/1/following/2|フォロー解除|
 |[ ]|GET|/api/v1/users/1/followers|フォロワーリストの取得|
 |[ ]|GET|/api/v1/users/1/followers/2|フォロワー情報の取得|
+
