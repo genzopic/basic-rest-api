@@ -14,9 +14,9 @@ const usersModule = (() => {
                         <td>${user.id}</td>
                         <td>${user.name}</td>
                         <td>${user.profile}</td>
+                        <td>${user.date_of_birth}</td>
                         <td>${user.created_at}</td>
                         <td>${user.updated_at}</td>
-                        <td>${user.date_of_birth}</td>
                       </tr>`
         // beforeend：末尾
         document.getElementById('users-list').insertAdjacentHTML('beforeend',body);
