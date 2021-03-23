@@ -81,7 +81,7 @@ const run = async (sql, db, res, message) => {
 //----------------------------------------------------------------
 app.post('/api/v1/users', async (req, res) => {
   const db = new sqlite3.Database(dbPath)
-
+  
   const name = req.body.name
   const profile = req.body.profile ? req.body.profile : ""
   const date_of_birth = req.body.date_of_birth ? req.body.date_of_birth : ""
@@ -92,7 +92,7 @@ app.post('/api/v1/users', async (req, res) => {
     res,
     "新規ユーザを作成しました！"
     )
-
+    
   db.close()
 })
 
